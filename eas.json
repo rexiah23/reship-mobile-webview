@@ -1,0 +1,40 @@
+{
+    "cli": {
+      "version": ">= 5.0.0"
+    },
+    "build": {
+      "develop": {
+        "distribution": "internal",
+        "android": {
+          "image": "latest",
+          "buildType": "apk"
+        },
+        "ios": {
+          "image": "latest"
+        }
+      },
+      "staging": {
+        "distribution": "internal",
+        "android": {
+          "image": "latest",
+          "buildType": "apk"
+        },
+        "ios": {
+          "image": "latest"
+        }
+      },
+      "production": {
+        "android": {
+          "image": "latest",
+          "buildType": "app-bundle"
+        },
+        "ios": {
+          "image": "latest"
+        },
+        "cache": {
+          "key": "false"
+        }
+      }
+    }
+  }
+  

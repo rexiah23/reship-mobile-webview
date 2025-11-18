@@ -1,29 +1,69 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Reship Mobile App Color Theme
  */
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+export const ColorsV2 = {
+  accent: "#3B1CFF",
+  primary: "#06043F",
+  special: "#1CADFF",
+  secondary: "#FFF",
+  extra: "#5A84D6",
+  inactive: "#C4C4C430",
+  lbl: "#6A6C6C",
+  xspecial: "#15C8EF",
+  selectedIcon: "#0554AD",
+  bg: "#B4C6D7",
+  err: "#FF0052",
+  note: "#EF5924",
+  success: "#42AD3B",
+  warn: "#FFA300",
+  transparentBlue: "rgba(59,28,255,0.5)",
+  _primary: "#00255B",
+  casper: "#B4C6D7",
+  lightBlue: "#15C8EF",
+  havBlue: "#5A84D6",
+  reshipBlue: "#0554AD",
+  chambray: "#3B1CFF",
+  bluePantone: "#0000ED",
+  bgPickBlue: "#2C354C",
+  bgMidnight: "#011E48",
+  bgDarkBlue: "#06043F",
+};
 
+export const Theme = {
+  py: "10px",
+  radius: "8px",
+  fontSize: "14px",
+  customSize: "24px",
+  titleSize: "26px",
+  subtitleSize: "12px",
+  containerPadding: "12px",
+  cardPadding: "13px",
+  heightConst: "16px",
+  buttonPadding: "18px",
+  heroHeight: "34px",
+  checkboxPadding: "5px",
+};
+
+// Legacy Colors object for backward compatibility
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: ColorsV2.primary,
+    background: ColorsV2.secondary,
+    tint: ColorsV2.reshipBlue,
+    icon: ColorsV2.lbl,
+    tabIconDefault: ColorsV2.inactive,
+    tabIconSelected: ColorsV2.selectedIcon,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: ColorsV2.secondary,
+    background: ColorsV2.bgDarkBlue,
+    tint: ColorsV2.lightBlue,
+    icon: ColorsV2.lbl,
+    tabIconDefault: ColorsV2.inactive,
+    tabIconSelected: ColorsV2.selectedIcon,
   },
 };
 
