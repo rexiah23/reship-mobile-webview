@@ -5,15 +5,13 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { WebViewProvider } from '@/contexts/WebViewContext';
-
-
-const HOME_URL = 'https://ship.reship.com/';
+import { env } from '@/utils/env';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <WebViewProvider homeUrl={HOME_URL}>
+    <WebViewProvider homeUrl={env.homeUrl}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />

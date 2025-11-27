@@ -1,0 +1,66 @@
+module.exports = {
+  expo: {
+    name: 'reship',
+    slug: 'reship',
+    version: '3.0.26',
+    orientation: 'portrait',
+    icon: './assets/images/icon_1024@1x.png',
+    scheme: 'reshipmobilewebview',
+    userInterfaceStyle: 'automatic',
+    newArchEnabled: true,
+    assetBundlePatterns: ['**/*'],
+    ios: {
+      bundleIdentifier: 'com.reship.beta',
+      buildNumber: '141',
+      supportsTablet: true,
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+      },
+    },
+    android: {
+      package: 'com.reship',
+      versionCode: 144,
+      adaptiveIcon: {
+        backgroundColor: '#E6F4FE',
+        foregroundImage: './assets/images/icon_1024@1x.png',
+        backgroundImage: './assets/images/icon_1024@1x.png',
+      },
+      edgeToEdgeEnabled: true,
+      predictiveBackGestureEnabled: false,
+    },
+    extra: {
+      eas: {
+        projectId: '1a9721fe-22b8-4304-b1f4-d5b8af132584',
+      },
+      // Base URL for the webview - set via EAS build environment variables
+      // Staging: ship.reship.rocks
+      // Production: ship.reship.com
+      webviewBaseUrl: process.env.EXPO_PUBLIC_WEBVIEW_BASE_URL || 'https://ship.reship.com',
+    },
+    web: {
+      output: 'static',
+      favicon: './assets/images/favicon.png',
+    },
+    plugins: [
+      'expo-router',
+      [
+        'expo-splash-screen',
+        {
+          image: './assets/images/splash-icon.png',
+          imageWidth: 200,
+          resizeMode: 'contain',
+          backgroundColor: '#ffffff',
+          dark: {
+            backgroundColor: '#000000',
+          },
+        },
+      ],
+    ],
+    experiments: {
+      typedRoutes: true,
+      reactCompiler: true,
+    },
+    owner: 'monarkreship',
+  },
+};
+
