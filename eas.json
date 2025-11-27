@@ -15,6 +15,9 @@
       },
       "staging": {
         "distribution": "internal",
+        "env": {
+          "EXPO_PUBLIC_WEBVIEW_BASE_URL": "https://ship.reship.rocks"
+        },
         "android": {
           "image": "latest",
           "buildType": "apk"
@@ -24,6 +27,9 @@
         }
       },
       "production": {
+        "env": {
+          "EXPO_PUBLIC_WEBVIEW_BASE_URL": "https://ship.reship.com"
+        },
         "android": {
           "image": "latest",
           "buildType": "app-bundle"

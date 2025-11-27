@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useRef, useState, useCallback, ReactNode } from 'react';
 import { WebView } from 'react-native-webview';
+import { env } from '@/utils/env';
 
 interface WebViewContextType {
   webViewRef: React.RefObject<WebView | null>;
@@ -13,11 +14,9 @@ interface WebViewContextType {
 
 const WebViewContext = createContext<WebViewContextType | undefined>(undefined);
 
-const DASHBOARD_URL = 'https://ship.reship.com/dashboard';
-
 export function WebViewProvider({ children, homeUrl }: { children: ReactNode; homeUrl: string }) {
   const webViewRef = useRef<WebView | null>(null);
-  const [currentUrl, setCurrentUrl] = useState(DASHBOARD_URL);
+  const [currentUrl, setCurrentUrl] = useState(env.dashboardUrl);
   const [activeWebViewRef, setActiveWebViewRef] = useState<React.RefObject<WebView | null> | null>(null);
 
   const navigateToUrl = useCallback((url: string) => {
@@ -33,7 +32,7 @@ export function WebViewProvider({ children, homeUrl }: { children: ReactNode; ho
   }, [activeWebViewRef]);
 
   const goHome = useCallback(() => {
-    setCurrentUrl(DASHBOARD_URL);
+    setCurrentUrl(env.dashboardUrl);
   }, []);
 
   const navigateWebView = useCallback((url: string) => {

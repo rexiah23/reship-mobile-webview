@@ -3,8 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { WebViewHeader } from '@/components/WebViewHeader';
 import { useWebView } from '@/contexts/WebViewContext';
-
-const DASHBOARD_URL = 'https://ship.reship.com/dashboard';
+import { env } from '@/utils/env';
 
 export default function HomeScreen() {
   const webViewRef = useRef<WebView | null>(null);
@@ -20,7 +19,7 @@ export default function HomeScreen() {
       <WebViewHeader />
       <WebView
         ref={webViewRef}
-        source={{ uri: DASHBOARD_URL }}
+        source={{ uri: env.dashboardUrl }}
         style={styles.webview}
         startInLoadingState={true}
         scalesPageToFit={true}

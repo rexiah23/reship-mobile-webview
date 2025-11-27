@@ -3,19 +3,20 @@ import { StyleSheet, TouchableOpacity, Platform, Share, Alert, View, Text } from
 import { IconSymbol } from './ui/icon-symbol';
 import { ColorsV2 } from '@/constants/theme';
 import { useWebView } from '@/contexts/WebViewContext';
+import { env } from '@/utils/env';
 
 export function WebViewHeader() {
   const { refresh, navigateWebView } = useWebView();
 
   const handleGoHome = () => {
-    navigateWebView('https://ship.reship.com/dashboard');
+    navigateWebView(env.dashboardUrl);
   };
 
   const handleShare = async () => {
     try {
       await Share.share({
         message: 'Check out Reship Mobile App',
-        url: 'https://ship.reship.com/',
+        url: env.homeUrl,
       });
     } catch (error) {
       Alert.alert('Error', 'Unable to share');

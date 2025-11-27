@@ -8,7 +8,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "ios-ipad": "xcrun simctl boot \"ipad 31\\\"\" 2>/dev/null; open -a Simulator; expo start"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
