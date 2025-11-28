@@ -10,11 +10,54 @@ export default function HomeScreen() {
   const webViewRef = useRef<WebView | null>(null);
   const { setWebViewRef } = useWebView();
   const [loading, setLoading] = useState(true);
+  const [previousUrl, setPreviousUrl] = useState<string | null>(null);
 
   React.useEffect(() => {
     setWebViewRef(webViewRef);
     return () => setWebViewRef(null);
   }, [setWebViewRef]);
+
+  const scrollToTop = () => {
+    if (webViewRef.current) {
+      webViewRef.current.injectJavaScript(`
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        true; // note: this is required, or you'll sometimes get silent failures
+      `);
+    }
+  };
+
+  // Inject JavaScript to handle window.open calls
+  const injectWindowOpenHandler = () => {
+    if (webViewRef.current) {
+      webViewRef.current.injectJavaScript(`
+        (function() {
+          // Override window.open to navigate in the same WebView
+          const originalOpen = window.open;
+          window.open = function(url, target, features) {
+            if (url && typeof url === 'string') {
+              // Navigate to the URL in the same WebView
+              window.location.href = url;
+              return null;
+            }
+            return originalOpen.apply(this, arguments);
+          };
+          
+          // Also handle links with target="_blank"
+          document.addEventListener('click', function(e) {
+            const link = e.target.closest('a[target="_blank"]');
+            if (link && link.href) {
+              e.preventDefault();
+              window.location.href = link.href;
+            }
+          }, true);
+          
+          true; // Required for injection
+        })();
+      `);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -35,7 +78,23 @@ export default function HomeScreen() {
         incognito={false}
         sharedCookiesEnabled={true}
         onLoadStart={() => setLoading(true)}
-        onLoadEnd={() => setLoading(false)}
+        onLoadEnd={() => {
+          setLoading(false);
+          scrollToTop();
+          // Inject window.open handler after page loads
+          injectWindowOpenHandler();
+        }}
+        onNavigationStateChange={(navState) => {
+          // Scroll to top when URL changes
+          if (previousUrl && previousUrl !== navState.url) {
+            scrollToTop();
+          }
+          setPreviousUrl(navState.url);
+        }}
+        onShouldStartLoadWithRequest={(request) => {
+          // Allow all navigation requests
+          return true;
+        }}
         onError={() => setLoading(false)}
       />
     </View>

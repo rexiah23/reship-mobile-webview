@@ -11,7 +11,7 @@ module.exports = {
     assetBundlePatterns: ['**/*'],
     ios: {
       bundleIdentifier: 'com.reship.beta',
-      buildNumber: '141',
+      buildNumber: '142',
       supportsTablet: true,
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,

@@ -6,10 +6,10 @@
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
-    "ios": "expo start --ios",
+    "ios": "xcrun simctl boot \"iPhone 17\" 2>/dev/null || true; open -a Simulator; expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "ios-ipad": "xcrun simctl boot \"ipad 31\\\"\" 2>/dev/null; open -a Simulator; expo start"
+    "ios-ipad": "xcrun simctl boot \"iphone 17\\\"\" 2>/dev/null; open -a Simulator; expo start"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
