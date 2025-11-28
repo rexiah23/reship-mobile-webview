@@ -2,7 +2,7 @@ module.exports = {
   expo: {
     name: 'reship',
     slug: 'reship',
-    version: '3.0.26',
+    version: '3.0.27',
     orientation: 'portrait',
     icon: './assets/images/icon_1024@1x.png',
     scheme: 'reshipmobilewebview',
@@ -11,7 +11,7 @@ module.exports = {
     assetBundlePatterns: ['**/*'],
     ios: {
       bundleIdentifier: 'com.reship.beta',
-      buildNumber: '141',
+      buildNumber: '142',
       supportsTablet: true,
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,

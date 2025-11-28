@@ -14,7 +14,7 @@
         }
       },
       "staging": {
-        "distribution": "internal",
+        "distribution": "store",
         "env": {
           "EXPO_PUBLIC_WEBVIEW_BASE_URL": "https://ship.reship.rocks"
         },
