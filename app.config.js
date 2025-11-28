@@ -2,7 +2,7 @@ module.exports = {
   expo: {
     name: 'reship',
     slug: 'reship',
-    version: '3.0.26',
+    version: '3.0.27',
     orientation: 'portrait',
     icon: './assets/images/icon_1024@1x.png',
     scheme: 'reshipmobilewebview',
