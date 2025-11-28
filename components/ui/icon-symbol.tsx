@@ -19,6 +19,7 @@ const MAPPING = {
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
   'arrow.clockwise': 'refresh',
+  'arrow.left': 'arrow-back',
   'square.and.arrow.up': 'share',
   'chart.bar.fill': 'dashboard',
   'person.fill': 'person',

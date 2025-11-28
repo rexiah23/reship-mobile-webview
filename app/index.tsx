@@ -8,7 +8,7 @@ import { env } from '@/utils/env';
 
 export default function HomeScreen() {
   const webViewRef = useRef<WebView | null>(null);
-  const { setWebViewRef } = useWebView();
+  const { setWebViewRef, navigateToUrl } = useWebView();
   const [loading, setLoading] = useState(true);
   const [previousUrl, setPreviousUrl] = useState<string | null>(null);
 
@@ -89,6 +89,12 @@ export default function HomeScreen() {
           if (previousUrl && previousUrl !== navState.url) {
             scrollToTop();
           }
+          
+          // Update URL in context (which will add to history stack)
+          if (previousUrl !== navState.url) {
+            navigateToUrl(navState.url);
+          }
+          
           setPreviousUrl(navState.url);
         }}
         onShouldStartLoadWithRequest={(request) => {

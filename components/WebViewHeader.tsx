@@ -6,7 +6,7 @@ import { useWebView } from '@/contexts/WebViewContext';
 import { env } from '@/utils/env';
 
 export function WebViewHeader() {
-  const { refresh, navigateWebView } = useWebView();
+  const { refresh, navigateWebView, goBack, canGoBack } = useWebView();
 
   const handleGoHome = () => {
     navigateWebView(env.dashboardUrl);
@@ -35,6 +35,19 @@ export function WebViewHeader() {
 
         {/* Action Buttons */}
         <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.button, !canGoBack && styles.buttonDisabled]}
+            onPress={goBack}
+            disabled={!canGoBack}
+            accessibilityLabel="Back"
+          >
+            <IconSymbol 
+              name="arrow.left" 
+              size={24} 
+              color={canGoBack ? ColorsV2.secondary : ColorsV2.inactive} 
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.button}
             onPress={refresh}
@@ -94,6 +107,9 @@ const styles = StyleSheet.create({
   button: {
     padding: 8,
     borderRadius: 8,
+  },
+  buttonDisabled: {
+    opacity: 0.5,
   },
 });
 
