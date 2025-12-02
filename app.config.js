@@ -11,7 +11,7 @@ module.exports = {
     assetBundlePatterns: ['**/*'],
     ios: {
       bundleIdentifier: 'com.reship.beta',
-      buildNumber: '142',
+      buildNumber: '164',
       supportsTablet: true,
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
@@ -19,7 +19,7 @@ module.exports = {
     },
     android: {
       package: 'com.reship',
-      versionCode: 144,
+      versionCode: 164,
       adaptiveIcon: {
         backgroundColor: '#E6F4FE',
         foregroundImage: './assets/images/icon_1024@1x.png',
